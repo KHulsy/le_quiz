@@ -18,7 +18,7 @@
     <h1>The Quiz</h1>
     
     <form id="trivia-form">
-        <label>
+        <label>https://www.facebook.com/KathleenShenanigans
             How is babby formed?<br>
             <select id="trivia-answer">
                 <option value="carefully">carefully</option>
@@ -48,289 +48,33 @@ function myFunction() {
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
-	     <form id="trivia-form">
-        <label>
-            Badger badger badger<br>
+<h1>The Quiz</h1>
+    
+    <form id="trivia-form">
+        <label>https://www.facebook.com/KathleenShenanigans
+            How is babby formed?<br>
             <select id="trivia-answer">
-                <option value="what">what</option>
-                <option value="como">como</option>
-                <option value="mande">mande</option>
-                <option value="mushroom snake">mushroom snake</option>
+                <option value="carefully">carefully</option>
+                <option value="Betsy DeVos">Betsy DeVos</option>
+                <option value="fergalicious">fergalicious</option>
+                <option value="instain mother">instain mother</option>
             </select>
         </label> <br>
-        <button type="submit">Check Answer</button>
-    </form>
-    <div id="result"></div>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script>
-<script>
-$(document).ready(function() {
-var number = 0;  //this is the current # of the question the user is working on
-$('#next').click(function() {
-number = number +1;
-
-    if (number > 1){
-$('#prev').css('display','block');
-}
-
-    $.post('getquestions.php', {number: number}, function(result){
-
-        $('#questionArea').html(result);
-    });
-
-});
-
-$('#prev').click(function() {
-number = number -1;
-    if (number < 2){
-$('#prev').css('display','none');
-}
-    $.post('getquestions.php', {number: number}, function(result){
-
-        $('#questionArea').html(result);
-    }); 
-});
-});
-</script>
-
-<div id='questionArea'></div>
-
-    
-    
-    </script>
-    </body>
-</html>
+<!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" href="styles.css">
-</head>
 <body>
 
-<h1>This is a heading</h1>
-<p>This is a paragraph.</p>
+<button onclick="myFunction()">Check Answer</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Instain Mother";
+}
+</script>
 
 </body>
-</html>  // Functions
-  function buildQuiz(){
-    // variable to store the HTML output
-    const output = [];
-
-    // for each question...
-    myQuestions.forEach(
-      (currentQuestion, questionNumber) => {
-
-        // variable to store the list of possible answers
-        const answers = [];
-
-        // and for each available answer...
-        for(letter in currentQuestion.answers){
-
-          // ...add an HTML radio button
-          answers.push(
-            `<label>
-              <input type="radio" name="question${questionNumber}" value="${letter}">
-              ${letter} :
-              ${currentQuestion.answers[letter]}
-            </label>`
-          );
-        }
-	      < form action="exam" method="post" name="questionForm" >
- < c:forEach var="choice" items="${sessionScope.quest.questionOptions}" varStatus="counter">
- < input type="radio" name="answer" value="${counter.count}" >${choice}  < br/>
- < /c:forEach> < br/> 
-
- < c:if test="${sessionScope.quest.questionNumber > 0}">
- < input type="submit" name="action" value="Previous" onclick="customSubmit()" />
- < /c:if>
-
- < c:if test="${sessionScope.quest.questionNumber <  sessionScope.totalNumberOfQuizQuestions-1}">
- < input type="submit" name="action" value="Next" onclick="customSubmit()" />
- < /c:if> 
-
- < input type="submit" name="action" value="Finish Exam" onclick="customSubmit()" />
-
-< input type="hidden" name="minute"/> 
-< input type="hidden" name="second"/>
-
-< /form>
-        // add this question and its answers to the output
-        output.push(
-          `<div class="slide">
-            <div class="question"> ${currentQuestion.question} </div>
-            <div class="answers"> ${answers.join("")} </div>
-          </div>`
-        );
-      }
-    );
-    <script>
-      request.getSession().setAttribute("totalNumberOfQuizQuestions",document.getElementsByTagName("totalQuizQuestions").item(0).getTextContent());
-				request.getSession().setAttribute("quizDuration",document.getElementsByTagName("quizDuration").item(0).getTextContent());
-				request.getSession().setAttribute("min",document.getElementsByTagName("quizDuration").item(0).getTextContent());
-				request.getSession().setAttribute("sec",0);
-Countdown Time
-We have to decrement the timer after each second, to do that we are going to create a Javascript function that will be first called when exam page is loaded and then we will call that function recursively after each second to countdown time.
-
-Javascript function to countdown time
-
-< script language ="javascript" >
-        var tim;       
-        var min = '${sessionScope.min}';
-        var sec = '${sessionScope.sec}';
-        var f = new Date();
-
-        function customSubmit(someValue){  
-        	 document.questionForm.minute.value = min;   
-        	 document.questionForm.second.value = sec; 
-        	 document.questionForm.submit();  
-        	 }  
-
-        function examTimer() {
-            if (parseInt(sec) >0) {
-
-			    document.getElementById("showtime").innerHTML = "Time Remaining :"+min+" Minutes ," + sec+" Seconds";
-                sec = parseInt(sec) - 1;                
-                tim = setTimeout("examTimer()", 1000);
-            }
-            else {
-
-			    if (parseInt(min)==0 && parseInt(sec)==0){
-			    	document.getElementById("showtime").innerHTML = "Time Remaining :"+min+" Minutes ," + sec+" Seconds";
-				     alert("Time Up");
-				     document.questionForm.minute.value=0;
-				     document.questionForm.second.value=0;
-				     document.questionForm.submit();
-
-			     }
-
-                if (parseInt(sec) == 0) {				
-				    document.getElementById("showtime").innerHTML = "Time Remaining :"+min+" Minutes ," + sec+" Seconds";					
-                    min = parseInt(min) - 1;
-					sec=59;
-                    tim = setTimeout("examTimer()", 1000);
-                }
-
-            }
-        }
-    < /script>
-    // finally combine our output list into one string of HTML and put it on the page
-    quizContainer.innerHTML = output.join('');
-  }
-
-  function showResults(){
-
-    // gather answer containers from our quiz
-    const answerContainers = quizContainer.querySelectorAll('.answers');
-
-    // keep track of user's answers
-    let numCorrect = 0;
-
-    // for each question...
-    myQuestions.forEach( (currentQuestion, questionNumber) => {
-
-      // find selected answer
-      const answerContainer = answerContainers[questionNumber];
-      const selector = `input[name=question${questionNumber}]:checked`;
-      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
-      // if answer is correct
-      if(userAnswer === currentQuestion.correctAnswer){
-        // add to the number of correct answers
-        numCorrect++;
-
-        // color the answers green
-        answerContainers[questionNumber].style.color = 'lightgreen';
-      }
-      // if answer is wrong or blank
-      else{
-        // color the answers red
-        answerContainers[questionNumber].style.color = 'red';
-      }
-    });
-
-    // show number of correct answers out of total
-    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
-  }
-
-  function showSlide(n) {
-    slides[currentSlide].classList.remove('active-slide');
-    slides[n].classList.add('active-slide');
-    currentSlide = n;
-    if(currentSlide === 0){
-      previousButton.style.display = 'none';
-    }
-    else{
-      previousButton.style.display = 'inline-block';
-    }
-    if(currentSlide === slides.length-1){
-      nextButton.style.display = 'none';
-      submitButton.style.display = 'inline-block';
-    }
-    else{
-      nextButton.style.display = 'inline-block';
-      submitButton.style.display = 'none';
-    }
-  }
-
-  function showNextSlide() {
-    showSlide(currentSlide + 1);
-  }
-
-  function showPreviousSlide() {
-    showSlide(currentSlide - 1);
-  }
-
-  // Variables
-  const quizContainer = document.getElementById('quiz');
-  const resultsContainer = document.getElementById('results');
-  const submitButton = document.getElementById('submit');
-  const myQuestions = [
-    {
-      question: "How is babby formed?",
-      answers: {
-        a: "Jquery",
-        b: "Badger badger badger",
-        c: "She made her way instain mother"
-      },
-      correctAnswer: "c"
-    },
-    {
-      question: "Which of these is a Javascript library?",
-      answers: {
-        a: "index.html",
-        b: "panthersinbusinesssuits.php",
-        c: "ember.js"
-      },
-      correctAnswer: "c"
-    },
-    {
-      question: "What does HTML stand for?",
-      answers: {
-        a: "Hippies trying mushrooms lazily",
-        b: "Help Tom Make Lambchops",
-        c: "I invented post-its",
-        d: "Hypertext Markup Language"
-      },
-      correctAnswer: "d"
-    }
-  ];
-
-  // Kick things off
-  buildQuiz();
-
-  // Pagination
-  const previousButton = document.getElementById("previous");
-  const nextButton = document.getElementById("next");
-  const slides = document.querySelectorAll(".slide");
-  let currentSlide = 0;
-
-  // Show the first slide
-  showSlide(currentSlide);
-
-  // Event listeners
-  submitButton.addEventListener('click', showResults);
-  previousButton.addEventListener("click", showPreviousSlide);
-  nextButton.addEventListener("click", showNextSlide);
-})();
-<script>
-Terms
+</html>
+    </form>
+    <div id="instain mother"></div>
