@@ -42,7 +42,25 @@
             </label>`
           );
         }
+	      < form action="exam" method="post" name="questionForm" >
+ < c:forEach var="choice" items="${sessionScope.quest.questionOptions}" varStatus="counter">
+ < input type="radio" name="answer" value="${counter.count}" >${choice}  < br/>
+ < /c:forEach> < br/> 
 
+ < c:if test="${sessionScope.quest.questionNumber > 0}">
+ < input type="submit" name="action" value="Previous" onclick="customSubmit()" />
+ < /c:if>
+
+ < c:if test="${sessionScope.quest.questionNumber <  sessionScope.totalNumberOfQuizQuestions-1}">
+ < input type="submit" name="action" value="Next" onclick="customSubmit()" />
+ < /c:if> 
+
+ < input type="submit" name="action" value="Finish Exam" onclick="customSubmit()" />
+
+< input type="hidden" name="minute"/> 
+< input type="hidden" name="second"/>
+
+< /form>
         // add this question and its answers to the output
         output.push(
           `<div class="slide">
