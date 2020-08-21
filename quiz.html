@@ -1,13 +1,43 @@
-<h1> Super Serial Quiz <h1>
-<div class= "quiz container">
-  <div id= "quiz" ></div>
-  </div>
-  <button id= "previous">Previous Question
-  <button id="Next"</button> Next Question
-  <button id="Submit"</button> Submit Quiz<script>
-  <button id=""Review"</button> Review Results<script>
-  <div id= "results" ></div>;
- <!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Challenge: jQuery trivia quiz</title>
+        <style>
+            #result {
+                background: rgb(255, 246, 204);
+                border: 2px dotted gold;
+                font-size: 24px;
+                height: 60px;
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+
+    <h1>The Quiz</h1>
+    
+    <form id="trivia-form">
+        <label>
+            How is babby formed?<br>
+            <select id="trivia-answer">
+                <option value="carefully">carefully</option>
+                <option value="Betsy DeVos">Betsy DeVos</option>
+                <option value="fergalicious">fergalicious</option>
+                <option value="instain mother">instain mother</option>
+            </select>
+        </label> <br>
+        <button type="submit">Check Answer</button>
+    </form>
+    <div id="result"></div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    
+    
+    </script>
+    </body>
+</html>
 <html>
 <head>
   <link rel="stylesheet" href="styles.css">
