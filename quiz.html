@@ -48,7 +48,39 @@
     <div id="result"></div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script>	    
+    <script>
+<script>
+$(document).ready(function() {
+var number = 0;  //this is the current # of the question the user is working on
+$('#next').click(function() {
+number = number +1;
+
+    if (number > 1){
+$('#prev').css('display','block');
+}
+
+    $.post('getquestions.php', {number: number}, function(result){
+
+        $('#questionArea').html(result);
+    });
+
+});
+
+$('#prev').click(function() {
+number = number -1;
+    if (number < 2){
+$('#prev').css('display','none');
+}
+    $.post('getquestions.php', {number: number}, function(result){
+
+        $('#questionArea').html(result);
+    }); 
+});
+});
+</script>
+
+<div id='questionArea'></div>
+
     
     
     </script>
